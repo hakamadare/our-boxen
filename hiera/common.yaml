@@ -1,0 +1,46 @@
+---
+# This is an example of the kinds of things that you can configure via hiera.
+# If you've left the defaults in `/hiera.yml`, you might want to copy this file
+# to `hiera/common.yaml`, or feel free to start with a blank slate!
+
+# Have a gander at some of these examples to get an idea of some of the things
+# that you can affect 'out of the box', and then customise to your
+# heart's content.
+
+# Ruby/rbenv
+ruby::build::ensure: 'v20170726'
+ruby::rbenv::ensure: 'v1.1.1'
+ruby::rbenv::plugins:
+  rbenv-default-gems:
+    ensure: 'master'
+    source: 'rbenv/rbenv-default-gems'
+  ruby-build-update-defs:
+    ensure: 'master'
+    source: 'jasonkarns/ruby-build-update-defs'
+
+# node.js
+nodejs::build::ensure: 'v2.6.11'
+nodejs::nodenv::ensure: 'v1.1.1'
+
+# macvim
+macvim::ensure: '8.0-110'
+macvim::custom_icons: true
+macvim::lua: true
+
+# git
+git::package: 'git'
+git::version: '2.14.1'
+
+# hub
+hub::package_name: 'hub'
+
+# mysql
+mysql::ensure: 'absent'
+mysql::socket: "%{::boxen::config::datadir}/socket"
+mysql::package: 'mariadb'
+mysql::version: '10.1.9'
+
+# postgresql
+postgresql::ensure: 'absent'
+postgresql::package: 'postgresql'
+postgresql::version: '9.5.0'
